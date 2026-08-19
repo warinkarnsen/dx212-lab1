@@ -1,7 +1,458 @@
-<html>
-    <body>
-        <h1>My - Profile</h1>
-        <p>
-            Nello da yo
-        </p>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warinkarn ✿ intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#FFB6C7;
+    --pink-deep:#FF8FA8;
+    --green:#B9EAC9;
+    --green-deep:#5FC98E;
+    --cream:#FBFFF9;
+    --ink:#38524A;
+    --ink-soft:#6E8C7D;
+    --bg1:#FFE3EC;
+    --bg2:#F3FFF1;
+    --bg3:#DAF5E3;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Sarabun', sans-serif;
+    color:var(--ink);
+    background:linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 45%, var(--bg3) 100%);
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  .sky{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    overflow:hidden;
+  }
+
+  .cloud{
+    position:absolute;
+    width:48px; height:24px;
+    box-shadow:
+      12px 0px 0 var(--cream),
+      18px 0px 0 var(--cream),
+      36px 0px 0 var(--cream),
+      42px 0px 0 var(--cream),
+      6px 6px 0 var(--cream),
+      12px 6px 0 var(--cream),
+      18px 6px 0 var(--cream),
+      24px 6px 0 var(--cream),
+      30px 6px 0 var(--cream),
+      36px 6px 0 var(--cream),
+      42px 6px 0 var(--cream),
+      0px 12px 0 var(--cream),
+      6px 12px 0 var(--cream),
+      12px 12px 0 var(--cream),
+      18px 12px 0 var(--cream),
+      24px 12px 0 var(--cream),
+      30px 12px 0 var(--cream),
+      36px 12px 0 var(--cream),
+      42px 12px 0 var(--cream),
+      48px 12px 0 var(--cream),
+      0px 18px 0 var(--cream),
+      6px 18px 0 var(--cream),
+      12px 18px 0 var(--cream),
+      18px 18px 0 var(--cream),
+      24px 18px 0 var(--cream),
+      30px 18px 0 var(--cream),
+      36px 18px 0 var(--cream),
+      42px 18px 0 var(--cream),
+      48px 18px 0 var(--cream);
+    opacity:.85;
+    animation:drift linear infinite;
+  }
+  .cloud.c1{ top:8%;  animation-duration:38s; transform:scale(1.1); }
+  .cloud.c2{ top:18%; animation-duration:52s; transform:scale(.7); opacity:.6; }
+  .cloud.c3{ top:5%;  animation-duration:44s; transform:scale(.9); animation-delay:-15s; }
+
+  @keyframes drift{
+    from{ left:-60px; }
+    to{ left:110%; }
+  }
+
+  .star{
+    position:absolute;
+    width:15px;height:15px;
+    box-shadow:
+      6px 0px 0 var(--green-deep),
+      6px 3px 0 var(--green-deep),
+      0px 6px 0 var(--green-deep),
+      3px 6px 0 var(--green-deep),
+      6px 6px 0 var(--green-deep),
+      9px 6px 0 var(--green-deep),
+      12px 6px 0 var(--green-deep),
+      6px 9px 0 var(--green-deep),
+      6px 12px 0 var(--green-deep);
+    animation:twinkle 2.6s ease-in-out infinite;
+  }
+
+  @keyframes twinkle{
+    0%,100%{ opacity:.25; transform:scale(.8); }
+    50%{ opacity:1; transform:scale(1); }
+  }
+
+  main{
+    position:relative;
+    z-index:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:56px 18px 80px;
+  }
+
+  /* ---- avatar stage ---- */
+  .stage{
+    position:relative;
+    width:220px;
+    height:150px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    margin-bottom:14px;
+  }
+
+  .platform{
+    position:absolute;
+    bottom:0;
+    width:150px;
+    height:18px;
+    background:var(--green);
+    border:4px solid var(--ink);
+    border-radius:2px;
+    box-shadow: 0 6px 0 rgba(56,82,74,.15);
+  }
+
+  #avatarCanvas{
+    position:relative;
+    image-rendering:pixelated;
+    animation:bounce 2.4s ease-in-out infinite;
+    filter:drop-shadow(0 4px 0 rgba(56,82,74,.18));
+  }
+
+  @keyframes bounce{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-10px); }
+  }
+
+  .heart-particle{
+    position:absolute;
+    width:16px;height:16px;
+    box-shadow:
+      4px 0px 0 var(--pink),
+      12px 0px 0 var(--pink),
+      0px 4px 0 var(--pink),
+      4px 4px 0 var(--pink),
+      8px 4px 0 var(--pink),
+      12px 4px 0 var(--pink),
+      16px 4px 0 var(--pink),
+      0px 8px 0 var(--pink),
+      4px 8px 0 var(--pink),
+      8px 8px 0 var(--pink),
+      12px 8px 0 var(--pink),
+      16px 8px 0 var(--pink),
+      4px 12px 0 var(--pink),
+      8px 12px 0 var(--pink),
+      12px 12px 0 var(--pink),
+      8px 16px 0 var(--pink);
+    opacity:0;
+    animation:floatUp 3.6s ease-in infinite;
+  }
+
+  @keyframes floatUp{
+    0%{ opacity:0; transform:translateY(0) scale(.7); }
+    15%{ opacity:.9; }
+    80%{ opacity:.5; }
+    100%{ opacity:0; transform:translateY(-90px) scale(1); }
+  }
+
+  /* ---- pixel window (dialog box) ---- */
+  .window{
+    position:relative;
+    width:min(420px, 92vw);
+    background:var(--cream);
+    border:4px solid var(--ink);
+    box-shadow:
+      0 0 0 4px var(--cream),
+      0 0 0 8px var(--ink),
+      0 10px 0 rgba(56,82,74,.12);
+    padding:22px 20px 26px;
+    margin-bottom:22px;
+  }
+
+  .titlebar{
+    font-family:'Press Start 2P', cursive;
+    font-size:10px;
+    letter-spacing:1px;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+
+  .name-row{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+
+  .name{
+    font-family:'Press Start 2P', cursive;
+    font-size:15px;
+    line-height:1.6;
+    color:var(--ink);
+    text-shadow:2px 2px 0 var(--pink);
+  }
+
+  .lv{
+    font-family:'Press Start 2P', cursive;
+    font-size:9px;
+    background:var(--green);
+    border:2px solid var(--ink);
+    padding:4px 6px;
+    white-space:nowrap;
+  }
+
+  .hearts{
+    display:flex;
+    gap:4px;
+    margin-bottom:16px;
+  }
+  .hp{
+    width:14px;height:14px;
+    box-shadow:
+      3.5px 0px 0 var(--pink-deep),
+      10.5px 0px 0 var(--pink-deep),
+      0px 3.5px 0 var(--pink-deep),
+      3.5px 3.5px 0 var(--pink-deep),
+      7px 3.5px 0 var(--pink-deep),
+      10.5px 3.5px 0 var(--pink-deep),
+      14px 3.5px 0 var(--pink-deep),
+      0px 7px 0 var(--pink-deep),
+      3.5px 7px 0 var(--pink-deep),
+      7px 7px 0 var(--pink-deep),
+      10.5px 7px 0 var(--pink-deep),
+      14px 7px 0 var(--pink-deep),
+      3.5px 10.5px 0 var(--pink-deep),
+      7px 10.5px 0 var(--pink-deep),
+      10.5px 10.5px 0 var(--pink-deep),
+      7px 14px 0 var(--pink-deep);
+  }
+
+  .speech{
+    background:var(--bg2);
+    border:2px dashed var(--green-deep);
+    padding:12px 14px;
+    font-size:16px;
+    line-height:1.65;
+    border-radius:4px;
+  }
+
+  /* ---- sections ---- */
+  section{
+    width:min(420px, 92vw);
+    margin-bottom:20px;
+  }
+
+  .section-label{
+    font-family:'Press Start 2P', cursive;
+    font-size:11px;
+    color:var(--ink);
+    background:var(--pink);
+    display:inline-block;
+    padding:5px 10px;
+    border:2px solid var(--ink);
+    margin-bottom:10px;
+    box-shadow:3px 3px 0 rgba(56,82,74,.18);
+  }
+
+  .about-text{
+    font-size:17px;
+    line-height:1.8;
+    background:var(--cream);
+    border:3px solid var(--ink);
+    padding:16px 18px;
+  }
+
+  .links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .link-btn{
+    font-family:'Press Start 2P', cursive;
+    font-size:10px;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--green);
+    border:2px solid var(--ink);
+    padding:10px 12px;
+    box-shadow:3px 3px 0 var(--ink);
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+  .link-btn:hover{
+    transform:translate(-2px,-2px);
+    box-shadow:5px 5px 0 var(--ink);
+    background:var(--pink);
+  }
+  .link-btn:active{
+    transform:translate(0,0);
+    box-shadow:1px 1px 0 var(--ink);
+  }
+
+  footer{
+    font-family:'Press Start 2P', cursive;
+    font-size:9px;
+    color:var(--ink-soft);
+    text-align:center;
+    padding-top:10px;
+    letter-spacing:.5px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cloud, .star, #avatarCanvas, .heart-particle{ animation:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sky" id="sky">
+  <div class="cloud c1" style="left:-60px"></div>
+  <div class="cloud c2" style="left:-60px"></div>
+  <div class="cloud c3" style="left:-60px"></div>
+</div>
+
+<main>
+
+  <div class="stage">
+    <div class="heart-particle" style="left:20px; animation-delay:0s;"></div>
+    <div class="heart-particle" style="left:150px; animation-delay:1.4s;"></div>
+    <div class="heart-particle" style="left:90px; animation-delay:2.6s;"></div>
+    <canvas id="avatarCanvas" width="160" height="160"></canvas>
+    <div class="platform"></div>
+  </div>
+
+  <div class="window">
+    <div class="titlebar">✧ STATUS WINDOW ✧</div>
+    <div class="name-row">
+      <span class="name">WARINKARN<br>SENAWEERAKUL</span>
+      <span class="lv">ID 6823765539</span>
+    </div>
+    <div class="hearts">
+      <span class="hp"></span><span class="hp"></span><span class="hp"></span><span class="hp"></span><span class="hp"></span>
+    </div>
+    <div class="speech">วิทยาลัยนวัตกรรม 🌿<br>สาขานวัตกรรมการแปรรูปดิจิทัล (dx)</div>
+  </div>
+
+  <section>
+    <div class="section-label">APP IDEA</div>
+    <div class="about-text">
+      แอปที่อยากสร้างในวิชานี้คือ <strong>"เกมเลี้ยงแมว"</strong> — วิธีเลี้ยงแมวให้เป็นจอมมารเพื่อครองโลก 🐾
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">CONTACT</div>
+    <div class="links">
+      <a class="link-btn" href="https://github.com/warinkarnsen" target="_blank" rel="noopener">✧ MY GITHUB</a>
+    </div>
+  </section>
+
+  <footer>THANKS FOR VISITING ♡</footer>
+
+</main>
+
+<script>
+// ---- pixel avatar: cute chibi cat-blob ----
+const PALETTE = {
+  0: null,
+  1: "#38524A", // outline
+  2: "#FFF6EF", // cream fur
+  3: "#FFB6C7", // inner ear pink
+  4: "#FFCBD9", // blush
+  5: "#2E453D", // eye
+  6: "#B9EAC9", // nose mint
+};
+
+const gridOpen = [
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0],
+[0,0,1,1,0,1,1,1,1,1,1,0,1,1,0,0],
+[0,0,1,2,1,2,2,2,2,2,2,1,2,1,0,0],
+[0,0,0,1,2,2,2,2,2,2,2,2,1,0,0,0],
+[0,0,1,2,2,2,2,2,2,2,2,2,2,1,0,0],
+[0,0,1,2,2,2,2,2,2,2,2,2,2,1,0,0],
+[0,1,2,2,2,5,2,2,2,2,5,2,2,2,1,0],
+[0,1,2,2,2,2,2,6,2,2,2,2,2,2,1,0],
+[0,1,2,2,4,2,2,1,1,2,2,4,2,2,1,0],
+[0,0,1,2,2,2,2,2,2,2,2,2,2,1,0,0],
+[0,0,1,2,2,2,2,2,2,2,2,2,2,1,0,0],
+[0,0,0,1,2,2,2,2,2,2,2,2,1,0,0,0],
+[0,0,0,1,1,2,2,2,2,2,2,1,1,0,0,0],
+[0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+];
+
+// blinking version: eyes replaced with closed-eye line
+const gridBlink = gridOpen.map(row => row.slice());
+gridBlink[7][5] = 1; gridBlink[7][10] = 1;
+
+const canvas = document.getElementById('avatarCanvas');
+const ctx = canvas.getContext('2d');
+const SCALE = 10;
+
+function draw(grid){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(let y=0;y<grid.length;y++){
+    for(let x=0;x<grid[y].length;x++){
+      const c = PALETTE[grid[y][x]];
+      if(c){
+        ctx.fillStyle = c;
+        ctx.fillRect(x*SCALE, y*SCALE, SCALE, SCALE);
+      }
+    }
+  }
+}
+
+draw(gridOpen);
+
+function blinkLoop(){
+  draw(gridBlink);
+  setTimeout(()=>draw(gridOpen), 160);
+  const next = 2600 + Math.random()*2200;
+  setTimeout(blinkLoop, next);
+}
+setTimeout(blinkLoop, 2200);
+
+// ---- scatter twinkling stars ----
+const sky = document.getElementById('sky');
+const starPositions = [
+  [8,12],[22,25],[78,15],[88,30],[15,45],[92,55],[6,68],[50,10]
+];
+starPositions.forEach(([left, top], i)=>{
+  const s = document.createElement('div');
+  s.className = 'star';
+  s.style.left = left + '%';
+  s.style.top = top + '%';
+  s.style.animationDelay = (i*0.4) + 's';
+  sky.appendChild(s);
+});
+</script>
+
+</body>
 </html>
